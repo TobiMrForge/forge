@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DDL9Q44CX8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DDL9Q44CX8');
+</script>
+<title>Forge | Transparent Launches on Solana</title>
+<meta content="Every trader deserves to understand what they're getting into before they invest. Forge helps traders evaluate projects before they commit capital." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FF6B00;
+      --spark:  #FFA800;
+      --white:  #E8E8E8;
+      --bg:     #121212;
+      --surface:#1A1A1A;
+      --s2:     #202020;
+      --muted:  #555555;
+      --plat:   #888888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(18,18,18,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,107,0,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-wordmark {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--plat);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--white); }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 11px 26px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover  { background: #e05e00; }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 11px 26px;
+      background: transparent;
+      color: var(--plat);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.35); color: var(--white); }
+
+    /* ─── HERO ─────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 24px 88px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 65%, rgba(255,107,0,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding: 6px 18px;
+      border: 1px solid rgba(255,107,0,0.28);
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: blink 2.2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.25; }
+    }
+
+    h1 {
+      font-size: clamp(38px, 6.5vw, 76px);
+      font-weight: 800;
+      line-height: 1.07;
+      letter-spacing: -0.025em;
+      margin-bottom: 26px;
+      color: var(--white);
+    }
+    .glow {
+      background: linear-gradient(120deg, var(--orange) 0%, var(--spark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 28px rgba(255,107,0,0.45));
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 1.9vw, 19px);
+      color: var(--plat);
+      max-width: 580px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 12px;
+      max-width: 476px;
+      margin: 0 auto 14px;
+    }
+    .waitlist-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-input:focus   { border-color: var(--orange); }
+    .waitlist-input::placeholder { color: var(--muted); }
+
+    .waitlist-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ─── STATS BAR ─────────────────────────────── */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+      padding: 32px 56px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-l {
+      font-size: 12px;
+      color: var(--plat);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── SHARED SECTION ────────────────────────── */
+    .section { padding: 100px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .section-h {
+      font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-p {
+      font-size: 17px;
+      color: var(--plat);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    /* ─── PROBLEM ──────────────────────────────── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 56px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .big-stat {
+      background: var(--surface);
+      border: 1px solid rgba(255,107,0,0.18);
+      border-radius: 20px;
+      padding: 52px 40px;
+      text-align: center;
+    }
+    .big-stat-n {
+      font-size: 100px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .big-stat-l {
+      font-size: 16px;
+      color: var(--plat);
+      line-height: 1.6;
+    }
+
+    .pain-points {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .pain {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .pain-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,107,0,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+    .pain h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+    .pain p {
+      font-size: 14px;
+      color: var(--plat);
+      line-height: 1.65;
+    }
+
+    /* ─── SOLUTION / DASHBOARD VISUAL ─────────────────── */
+    .solution { background: var(--bg); }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .solution-text .section-p { max-width: 420px; }
+
+    /* Dashboard card */
+    .dashboard-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,107,0,0.06);
+    }
+    .dash-topbar {
+      background: var(--s2);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .dash-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dash-dot-r { background: #ff5f57; }
+    .dash-dot-y { background: #febc2e; }
+    .dash-dot-g { background: #28c840; }
+    .dash-url {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .dash-body { padding: 28px 24px; }
+    .dash-token-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .dash-token-info { display: flex; align-items: center; gap: 12px; }
+    .dash-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FF6B00, #FFA800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .dash-name { font-size: 15px; font-weight: 700; color: var(--white); }
+    .dash-ticker { font-size: 12px; color: var(--plat); }
+    .trust-badge {
+      background: rgba(255,107,0,0.12);
+      border: 1px solid rgba(255,107,0,0.3);
+      border-radius: 10px;
+      padding: 8px 16px;
+      text-align: center;
+    }
+    .trust-grade { font-size: 24px; font-weight: 800; color: var(--orange); line-height: 1; }
+    .trust-label { font-size: 10px; color: var(--plat); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .dash-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 0 0 20px;
+    }
+
+    .risk-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .risk-label { font-size: 12px; color: var(--plat); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .risk-val { font-size: 13px; font-weight: 700; color: var(--spark); }
+    .risk-bar-track {
+      height: 6px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 4px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .risk-bar-fill {
+      height: 100%;
+      width: 82%;
+      background: linear-gradient(90deg, var(--orange), var(--spark));
+      border-radius: 4px;
+    }
+
+    .dash-checks { display: flex; flex-direction: column; gap: 10px; }
+    .dash-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(40,200,80,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 10px;
+      color: #33cc66;
+      font-weight: 800;
+    }
+    .dash-footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .dash-footer span { font-weight: 600; color: var(--plat); }
+
+    /* ─── FEATURES ─────────────────────────────── */
+    .features { background: var(--surface); }
+    .features-head {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 64px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .feat-card {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feat-card:hover {
+      border-color: rgba(255,107,0,0.22);
+      transform: translateY(-3px);
+    }
+    .feat-pill {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(255,107,0,0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .feat-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    .feat-desc {
+      font-size: 14px;
+      color: var(--plat);
+      line-height: 1.72;
+    }
+
+    /* ─── HOW IT WORKS ─────────────────────────── */
+    .how { background: var(--bg); }
+    .how-head {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 64px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 36px 28px;
+      position: relative;
+    }
+    .step-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    .step-desc {
+      font-size: 14px;
+      color: var(--plat);
+      line-height: 1.7;
+    }
+
+    /* ─── GENESIS ──────────────────────────────── */
+    .genesis { background: var(--surface); }
+    .genesis-head {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 56px;
+    }
+    .genesis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .g-card {
+      border-radius: 20px;
+      padding: 44px 38px;
+    }
+    .g-card.creators {
+      background: linear-gradient(145deg, rgba(255,107,0,0.14) 0%, rgba(255,168,0,0.06) 100%);
+      border: 1px solid rgba(255,107,0,0.32);
+    }
+    .g-card.traders {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .g-limit {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+    .g-card.traders .g-limit { color: var(--spark); }
+    .g-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 28px;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .g-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .g-perks li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .g-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255,107,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .g-card.traders .g-check {
+      background: rgba(255,168,0,0.14);
+      color: var(--spark);
+    }
+    .btn-genesis {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      text-align: center;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .btn-genesis:hover { background: #e05e00; }
+    .g-card.traders .btn-genesis {
+      background: transparent;
+      border: 1px solid rgba(255,168,0,0.4);
+      color: var(--spark);
+    }
+    .g-card.traders .btn-genesis:hover { background: rgba(255,168,0,0.08); }
+
+    /* ─── BUILT IN PUBLIC ──────────────────────────────── */
+    .public { background: var(--surface); }
+    .public-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .public-inner .section-p { margin: 0 auto 36px; max-width: 520px; }
+    .public-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ───────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 44px 48px;
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      font-size: 14px;
+      color: var(--plat);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .footer-link:hover { color: var(--orange); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+
+    /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 820px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .waitlist-form { flex-direction: column; }
+      .stats-bar { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .stat:last-child { border-bottom: none; }
+      .problem-grid { grid-template-columns: 1fr; gap: 32px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .genesis-grid { grid-template-columns: 1fr; }
+      .section { padding: 72px 20px; }
+      footer { padding: 36px 20px; }
+    }
+  </style>
+<script async="" src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+</head>
+<body>
+<!--• ── NAV ──────────────────────────────────────── •-->
+<nav>
+<a class="logo" href="#">
+<span class="logo-wordmark" style="letter-spacing:.16em;font-weight:800;">FORGE</span>
+</a>
+<div class="nav-links">
+<a class="nav-link" href="#problem">Why Forge</a>
+<a class="nav-link" href="#features">How it works</a>
+<a class="nav-link" href="#genesis">Genesis</a>
+</div>
+<a class="btn-primary" href="#waitlist">Get Early Access</a>
+</nav>
+<!--• ── HERO ─────────────────────────────────────── •-->
+<section class="hero" id="top">
+<div class="hero-content">
+<div class="eyebrow">
+<span class="eyebrow-dot"></span>
+      Now in early access • Solana
+    </div>
+<h1>Every trader deserves to understand what they're getting into before they invest.</h1>
+<p class="hero-sub">Forge is building the standard for transparent launches on Solana by helping traders understand projects before they commit capital.</p>
+<form action="https://app.kit.com/forms/9625153/subscriptions" class="waitlist-form seva-form formkit-form" id="waitlist" method="post" data-sv-form="9625153" data-uid="0eade37fa0" data-format="inline">
+<input class="waitlist-input" id="emailInput" name="email_address" placeholder="Your email address" required="" type="email"/>
+<button class="btn-primary" id="joinBtn" type="submit">Join the First 500</button>
+</form>
+
+<p class="waitlist-note">One waitlist. You'll choose whether you're joining as a creator or trader before invitations begin.</p><p class="waitlist-note" style="margin-top:10px;"><a href="https://x.com/tryforgehq" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">Follow the build → @tryforgehq</a></p>
+</div>
+</section>
+<!--• ── STATS ─────────────────────────────────────── •-->
+<div class="stats-bar">
+<div class="stat">
+<div class="stat-n">98%</div>
+<div class="stat-l">Built for transparent launches</div>
+</div>
+<div class="stat">
+<div class="stat-n">0%</div>
+<div class="stat-l">Creator fees • Genesis Program</div>
+</div>
+<div class="stat">
+<div class="stat-n">100</div>
+<div class="stat-l">Unique wallets to graduate. Enforced.</div>
+</div>
+</div>
+<!--• ── PROBLEM ────────────────────────────────────── •-->
+<section class="section" id="problem">
+<div class="container">
+<div>
+<p class="tag">The problem</p>
+<h2 class="section-h">Crypto's broken by design,<br/>not just bad actors.</h2>
+</div>
+<div class="problem-grid">
+<div class="big-stat">
+<div class="big-stat-n">Why?</div><div class="big-stat-l">Traders deserve better information before they invest.</div>
+</div>
+<div class="pain-points">
+<div class="pain">
+<div class="pain-icon">🔓</div>
+<div>
+<h4>Fake "fair launches"</h4>
+<p>Insider wallets accumulate supply before the public sees a token. The team calls it fair. The contract never agreed.</p>
+</div>
+</div>
+<div class="pain">
+<div class="pain-icon">🤖</div>
+<div>
+<h4>Sybil attacks</h4>
+<p>Multi-wallet clusters fake organic interest, manipulate discovery rankings, then dump coordinated supply on retail traders.</p>
+</div>
+</div>
+<div class="pain">
+<div class="pain-icon">💸</div>
+<div>
+<h4>Misaligned platform incentives</h4>
+<p>Platforms collect fees the moment you launch. Whether you rug or build, they already won. You're on your own.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--• ── WHAT FORGE DOES ───────────────────────────────── •-->
+<section class="section solution" id="solution">
+<div class="container">
+<p class="tag">What Forge does</p>
+<h2 class="section-h">See exactly what you're buying.</h2>
+<div class="solution-grid">
+<div class="solution-text">
+<p class="section-p" style="margin-bottom:20px;">Every token on Forge comes with a full breakdown before you invest, who holds it, how wallets are connected, whether the creator has launched before, and a trust score that tells you what it all means. With more incredible features on the way.</p>
+<p class="section-p">Not buried in a block explorer. Right there, on the token page, before you click buy.</p>
+</div>
+<div class="dashboard-card">
+<div class="dash-topbar">
+<span class="dash-dot dash-dot-r"></span>
+<span class="dash-dot dash-dot-y"></span>
+<span class="dash-dot dash-dot-g"></span>
+<span class="dash-url">tryforge.fun/token/example</span>
+</div>
+<div class="dash-body">
+<div class="dash-token-row">
+<div class="dash-token-info">
+<div class="dash-avatar">🔥</div>
+<div>
+<div class="dash-name">Example Token</div>
+<div class="dash-ticker">$EXAMPLE</div>
+</div>
+</div>
+<div class="trust-badge">
+<div class="trust-grade">A+</div>
+<div class="trust-label">Trust Score</div>
+</div>
+</div>
+<div class="dash-divider"></div>
+<div class="risk-row">
+<span class="risk-label">Risk Score</span>
+<span class="risk-val">Low — 82 / 100</span>
+</div>
+<div class="risk-bar-track">
+<div class="risk-bar-fill"></div>
+</div>
+<div class="dash-checks">
+<div class="dash-check"><span class="check-icon">✓</span> Liquidity locked until graduation</div>
+<div class="dash-check"><span class="check-icon">✓</span> Creator allocation locked</div>
+<div class="dash-check"><span class="check-icon">✓</span> Wallet distribution is healthy</div>
+<div class="dash-check"><span class="check-icon">✓</span> No linked wallet clusters detected</div>
+</div>
+<div class="dash-footer">
+<span>847 holders</span>
+<span>$218K volume</span>
+<span>12 days old</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--• ── FEATURES ───────────────────────────────────── •-->
+<section class="section features" id="features">
+<div class="container">
+<div class="features-head">
+<p class="tag">How Forge is different</p>
+<h2 class="section-h">Enforced by contract.<br/>Not promised by a team.</h2>
+<p class="section-p" style="margin:0 auto;">Every protection on Forge is a smart contract constraint, not a policy you're asked to trust.</p>
+</div>
+<div class="features-grid">
+<div class="feat-card">
+<div class="feat-pill">On-chain enforcement</div>
+<div class="feat-title">Contract-Enforced Locks</div>
+<p class="feat-desc">LP and creator allocations are locked by contract until $500K volume and 24 consecutive hours above launch price. No team override. No exceptions. The contract controls it, not us.</p>
+</div>
+<div class="feat-card">
+<div class="feat-pill">Sybil detection</div>
+<div class="feat-title">Wallet Clustering Detection</div>
+<p class="feat-desc">Funding-source graph analysis identifies coordinated multi-wallet attacks before a token goes live. Bubble-map visualisations show every holder relationship clearly. Nothing hidden.</p>
+</div>
+<div class="feat-card">
+<div class="feat-pill">Trust algorithm</div>
+<div class="feat-title">Trust-Weighted Discovery</div>
+<p class="feat-desc">Five signals: wallet diversity, holder retention, creator history, social verification, and volume-to-holder ratio surface legitimate projects. Gaming volume doesn't win here.</p>
+</div>
+<div class="feat-card">
+<div class="feat-pill">Graduation standards</div>
+<div class="feat-title">100 Unique Wallets Required</div>
+<p class="feat-desc">Tokens must reach 100 genuinely unique holders before graduation. No synthetic volume, no concentrated supply clusters. Real community, or you don't graduate. The bar is the point.</p>
+</div>
+</div>
+</div>
+</section>
+<!--• ── HOW IT WORKS ───────────────────────────────── •-->
+<section class="section how">
+<div class="container">
+<div class="how-head">
+<p class="tag">The launch flow</p>
+<h2 class="section-h">Three steps. All enforced.</h2>
+</div>
+<div class="steps">
+<div class="step">
+<div class="step-num">Step 01</div>
+<div class="step-title">Launch with enforced locks</div>
+<p class="step-desc">Your LP and creator allocation are locked by the contract from the first transaction. There's no phase where a rug is structurally possible.</p>
+</div>
+<div class="step">
+<div class="step-num">Step 02</div>
+<div class="step-title">Grow with real trust signals</div>
+<p class="step-desc">Forge's discovery algorithm surfaces you based on genuine holder diversity and retention, not whale manipulation or bot volume.</p>
+</div>
+<div class="step">
+<div class="step-num">Step 03</div>
+<div class="step-title">Graduate with confidence</div>
+<p class="step-desc">Hit $500K volume and 100 unique wallets. Your lock unlocks, your community is real, and your launch record is on-chain and verifiable forever.</p>
+</div>
+</div>
+</div>
+</section>
+<!--• ── GENESIS ─────────────────────────────────────── •-->
+<section class="section genesis" id="genesis">
+<div class="container">
+<div class="genesis-head">
+<p class="tag">Genesis Program</p>
+<h2 class="section-h">Get in early.<br/>Get rewarded for it.</h2>
+<p class="section-p" style="margin:0 auto;">Limited spots for the builders and traders who show up first.</p>
+</div>
+<div class="genesis-grid">
+<div class="g-card creators">
+<div class="g-limit">⚒ First 10 Creators</div>
+<div class="g-title">Build on Forge for free</div>
+<ul class="g-perks">
+<li><span class="g-check">✓</span> 0% platform fees, forever</li>
+<li><span class="g-check">✓</span> 20% revenue share on launches</li>
+<li><span class="g-check">✓</span> Genesis Creator badge</li>
+<li><span class="g-check">✓</span> Direct line to the founding team</li>
+</ul>
+<a class="btn-genesis" href="#waitlist">Apply as Creator</a>
+</div>
+<div class="g-card traders">
+<div class="g-limit">⚡ First 100 Traders</div>
+<div class="g-title">Trade smarter from day one</div>
+<ul class="g-perks">
+<li><span class="g-check">✓</span> Genesis NFT • Non-dilutive</li>
+<li><span class="g-check">✓</span> Lifetime 0.5% fee discount</li>
+<li><span class="g-check">✓</span> Early access to all features</li>
+<li><span class="g-check">✓</span> Genesis Trader badge</li>
+</ul>
+<a class="btn-genesis" href="#waitlist">Join as Trader</a>
+</div>
+</div>
+</div>
+</section>
+<!--• ── BUILT IN PUBLIC ───────────────────────────────── •-->
+<section class="section public">
+<div class="container">
+<div class="public-inner">
+<p class="tag">Building in public</p>
+<h2 class="section-h">Follow the journey.</h2>
+<p class="section-p">Forge is being built in the open. Product decisions, technical choices, and the hard lessons. If you want to watch an idea become a product, this is where it happens.</p>
+<div class="public-ctas">
+<a class="btn-primary" href="https://x.com/tryforgehq" target="_blank" rel="noopener">Follow on X</a>
+<a class="btn-outline" href="https://t.me/tryforgeapp" target="_blank" rel="noopener">Join Telegram</a>
+</div>
+</div>
+</div>
+</section>
+<!--• ── FOOTER ──────────────────────────────────────── •-->
+<p style="text-align:center;color:#888;font-size:12px;padding:20px 24px 0;">Forge is under active development. Features shown may evolve before public launch.</p><footer>
+<div class="footer-inner">
+<a class="logo" href="#">
+<span class="logo-wordmark" style="font-size:15px;letter-spacing:.16em;font-weight:800;">FORGE</span>
+</a>
+<div class="footer-links">
+<a class="footer-link" href="https://x.com/tryforgehq" rel="noopener" target="_blank">X / Twitter</a>
+<a class="footer-link" href="https://t.me/tryforgeapp" rel="noopener" target="_blank">Telegram</a>
+<a class="footer-link" href="mailto:hello@tryforge.fun">hello@tryforge.fun</a>
+</div>
+<p class="footer-copy">© 2026 Forge. Built in Lagos, Nigeria.</p>
+</div>
+</footer>
+<script>
+  /* Smooth-scroll nav anchors */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const form=document.getElementById('waitlist');
+ if(!form) return;
+ const btn=form.querySelector('button[type="submit"],button');
+ const email=form.querySelector('input[type="email"]');
+ const msg=document.createElement('p');
+ msg.style.cssText='margin-top:12px;color:#bdbdbd;font-size:14px;';
+ form.appendChild(msg);
+
+ form.addEventListener('submit',()=>{
+   if(btn){
+     btn.disabled=true;
+     btn.dataset.original=btn.innerHTML;
+     btn.textContent='Joining...';
+   }
+   setTimeout(()=>{
+     if(btn){
+       btn.innerHTML='✓ You\'re in!';
+       btn.disabled=false;
+     }
+     if(email) email.value='';
+     msg.textContent='Welcome to Forge. Check your inbox.';
+   },1500);
+ });
+});
+</script>
+
+</body>
+</html>
